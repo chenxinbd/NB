@@ -40,6 +40,7 @@ def fetch_all_products():
                     continue
                 name = name_tag.get_text(strip=True)
                 name = re.sub(r'\s*\d+\s*$', '', name)
+                name = re.sub(r'控价\d+', '', name)
                 stock_tag = item.find("p", class_="kucun")
                 stock_text = stock_tag.get_text(strip=True) if stock_tag else "库存：暂缺"
                 stock = stock_text.replace("库存：", "").strip()
